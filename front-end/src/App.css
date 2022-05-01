@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+  padding: 7px 14px;
+  color:rgb(106, 107, 107);
+  font-size: 1em;
+  font-family: Bahnschrift;
+}
+
+img {
+  height: 20vmin;
+  pointer-events: none;
+}
+.btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 0.2em;
+  margin: 5px;
+  cursor: pointer;
+  width: 60%;
+  float: right;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.blue {
+  background-color: rgb(66, 179, 245);
+  color: #fff;
+}
+
+.green {
+  background-color: rgb(14, 145, 10);
+  color: #fff;
+}
+
+.orange {
+  background-color: rgb(231, 130, 15);
+  color: #fff;
+}
+
+.red {
+  background-color: rgb(161, 12, 12);
+  color: #fff;
+}
+input {
+  padding: 8px 17px;
+  border: 0.5px solid #ddd;
+  border-radius: 0.2em;
+  font-size: 1em;
+  margin: 5px;
+  color: rgb(133, 139, 145);
+  width:98%;
+}
+.form-container {
+  border-radius: 0 0 0.3em 0.3em;
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 10px 20px;
+}
+.card-view {
+  margin: auto 30%;
+}
+.header {
+  font-size: 1.4em;
+  padding: 10px 20px;
+  margin: auto;
+  border-radius: 0.3em 0.3em 0 0;
+}
+.user-form {
+  padding: 7px 10px;
+  animation: zoomgv 1s;
+}
+@keyframes zoomgv {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+@media screen and (max-width:425px) {
+  .card-view {
+    margin: auto 5%;
+  }
+}
+/* code for top nave */
+.top-nav {
+  background-color: rgb(66, 179, 245);
+  text-align: left;
+  color: white;
+  font-size: 1.1em;
+}
+.top-nav ul li{
+  list-style: none;
+  display: inline-table;
+  padding: 0.5em 1.2em;
+}
+.top-nav ul li button{
+  border-radius: 0.2em;
+  border: none;
+  background-color: rgb(241, 182, 19);
+  cursor: pointer;
+  padding: 4px 10px;
+}
