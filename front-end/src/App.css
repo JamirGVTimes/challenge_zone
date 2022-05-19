@@ -11,13 +11,12 @@ img {
   pointer-events: none;
 }
 .btn {
-  padding: 8px 18px;
+  padding: 4px 16px;
   border: none;
   border-radius: 0.2em;
   margin: 5px;
   cursor: pointer;
-  width: 60%;
-  float: right;
+  width: auto;
 }
 
 .btn:hover {
@@ -87,15 +86,22 @@ input {
 }
 /* code for top nave */
 .top-nav {
-  background-color: rgb(66, 179, 245);
+
   text-align: left;
   color: white;
   font-size: 1.1em;
+}
+.user {
+    background-color: rgb(66, 179, 245);
+}
+.admin {
+    background-color: rgb(23, 126, 23);
 }
 .top-nav ul li{
   list-style: none;
   display: inline-table;
   padding: 0.5em 1.2em;
+  color: white;
 }
 .top-nav ul li button{
   border-radius: 0.2em;
@@ -103,4 +109,141 @@ input {
   background-color: rgb(241, 182, 19);
   cursor: pointer;
   padding: 4px 10px;
+}
+.row-header{  
+  color: #fff;
+  text-align: left;
+  padding:  1em;
+}
+.user-row {
+  background-color: rgba(16, 140, 202, 0.61);
+}
+.admin-row {
+  background-color: rgb(6, 179, 72);
+}
+.map {
+  padding: 1em 1.1em;
+   text-align: left;
+}
+.map:nth-child(even){
+  background-color: rgb(211, 226, 233);
+  color: rgb(101, 102, 104);   
+}
+.map:nth-child(odd) {
+  background-color: rgb(238, 245, 248);
+  color: rgb(101, 102, 104);
+}
+.map:hover {
+  opacity: 0.7;
+  background-color: rgb(59, 59, 59);
+  color: #fff;
+  transition: background-color 0.5s ease-in-out;
+}
+/*code for the modal */
+.modal-container {
+  background-color: rgba(13, 16, 20, 0.842);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.modal-conte {
+  background-color: rgb(255, 255, 255);
+  width: 60%;
+  margin: 5em 20%;
+  border-radius: 0.5em;
+  animation: zoomgv 1s;
+  padding: 2em;
+  color: rgb(75, 76, 77);
+}
+
+.content {
+  padding: 7px 20px;
+  text-align: center;
+}
+
+@keyframes zoomgv {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+/* the code for the modal ends here */
+.account-changer{
+  padding: 5%;
+  margin: 10% 5%;
+}
+.user-icon {
+  width:15%;
+  height: auto;
+  color:#fff;
+  background-color:rgb(71, 181, 245);
+  border-radius: 0.5em;
+  border: none;
+  cursor:pointer;
+  padding: 2em;
+  display: inline-table;
+  margin:1em;
+}
+.user-icon:hover{
+  box-shadow: -5px 2px 15px black;
+  transition: all 0.5s ease;
+  opacity: 0.9;
+}
+.admin-icon {
+  width: 15%;
+  height: auto;
+  color: #fff;
+  background-color: rgb(23, 126, 23);
+  border-radius: 0.5em;
+  border: none;
+  cursor: pointer;
+  padding: 2em;
+  display: inline-table;
+  margin: 1em;
+}
+.admin-icon:hover{
+  box-shadow: -5px 2px 15px black;
+    transition: all 0.5s ease;
+    opacity: 0.9;
+}
+.todo-table {
+  margin: auto 4em;
+}
+
+.single-todo {
+  border: 1px solid rgb(207, 209, 209);
+  border-radius: 0.3em;
+  padding: 2em;
+  text-align: left;
+  display: inline-table;
+  width: 40%;
+  margin: auto 0.1em;
+}
+.single-todo b{
+  background-color: rgb(23, 113, 197);
+  border-radius: 50%;
+  padding: 5px;
+  color: white;
+}
+.single-todo .todo-title {
+  background-color: rgb(255, 255, 255);
+  color: rgb(119, 118, 118);
+  font-size: 1.4em;
+  margin: 2em auto;
+  border-bottom:  0.5px dotted #aaa;
+  animation: zoomgv 1s;
+}
+.form-single {
+  width: 100%;
+  
+}
+.userHome {
+  margin: auto 15%;
+  text-align: left;
 }
