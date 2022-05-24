@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form, Input } from 'antd';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '../features/todoSlice';
 import { closeModal } from '../features/modalSlice';
 
 
 
-function TodoCreate() {
+function AdminCreateTodo(props) {
     const [guys, setGuys] = useState({
         todoTi: '',
         todoDesc: ''
@@ -19,36 +19,38 @@ function TodoCreate() {
         </div>
     ));
     const dispatch = useDispatch();
-    const user1 = useSelector((vg) => vg.user.value);
+
     const onFinish =()=> {
         dispatch(addTodo({
-            userName: user1.userName,
+            userName: props.hisName,
             todoTitle: guys.todoTi,
             todoDescription: guys.todoDesc
         }));
         const newTodo = {
-            userName: user1.userName,
+            userName: props.hisName,
             todoTitle: guys.todoTi,
             todoDescription: guys.todoDesc
-        };        
-        axios.post('/bgima/usercreate-todo', newTodo)
-            .then((res) => {
-                console.log(res);
-                setReply(() => (
-                    <div style={{ color: 'green', fontSize: '1.1em' }}>
-                       <h4> ...Todo added successfully</h4>  
-                      <i>You can create a new One or Close </i>
-                    </div>
-                ));
-                setGuys({
-                    todoTi: '',
-                    todoDesc: ''
-                });
+        };
+        console.log(newTodo); 
+      axios.post('/bgima/usercreate-todo', newTodo)
+          .then((res) => {
+              console.log(res);
+              setReply(() => (
+                  <div style={{ color: 'green', fontSize: '1.1em' }}>
+                     <h4> ...Todo added successfully</h4>  
+                    <i>You can create a new One or Close </i>
+                  </div>
+              ));
+              setGuys({
+                  todoTi: '',
+                  todoDesc: ''
+              });
 
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+       
         
     };
  
@@ -91,7 +93,7 @@ function TodoCreate() {
                             <Button                       
                                 type='primary' htmlType='submit'> Add toto </Button>
                           
-                            <Link to='/home/view-todos'>
+                            <Link to='/home/admin/users/'>
                             <button className='btn orange' onClick={() => dispatch(closeModal())}> Close </button>
                          </Link>
                     </Form>
@@ -100,5 +102,5 @@ function TodoCreate() {
         );
     };
 
-export default TodoCreate;
+export default AdminCreateTodo;
 

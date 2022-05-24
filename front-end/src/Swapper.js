@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { UserAddOutlined, UsergroupAddOutlined } from '@ant-design/icons';
-import { isAdmin } from './features/adminPageSlice';
+import { isAdmin, notAdmin } from './features/adminPageSlice';
 import axios from 'axios';
 import { usersFetch } from './features/retrievedUsersSlice';
 import { todoSet } from './features/retrieveTodosSlice';
@@ -30,6 +30,8 @@ function Swapper() {
 
     if (user.userName === 'Muhumuza Jamir') {
         dispatch(isAdmin());
+    } else {
+        dispatch(notAdmin());
     };
     return (
         <div className="account-changer">

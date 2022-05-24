@@ -7,7 +7,10 @@ export const adminPageSlice = createSlice({
         isAdmin: (state) => {
             state.value = true;
         },
+        notAdmin: (state) => {
+            state.value = false;
+        },
     },
 });
-export const { isAdmin } = adminPageSlice.actions;
+export const { isAdmin, notAdmin } = adminPageSlice.actions;
 export default adminPageSlice.reducer;

@@ -11,7 +11,9 @@ import AdminHome from './components/AdminHome';
 import AdminUsersView from './components/AdminUsersView';
 import Swapper from './Swapper';
 import SingleTodoView from './components/SingleTodoView';
-
+import AdminUsersDHome from './components/AdminUsersDHome';
+import AdminSingleUserView from './components/AdminSingleUserView';
+import AdminViewUsersTodos from './components/AdminViewUsersTodos';
 function AuthTest() {
     return (       
       <Routes>
@@ -24,7 +26,11 @@ function AuthTest() {
           </Route>
             <Route path='/home/admin' element={<AdminLayout/>}>
               <Route index element={<AdminHome/>}/>
-              <Route path='/home/admin/users' element={<AdminUsersView />} />
+          <Route path='/home/admin/users' element={<AdminUsersView />} >
+            <Route index element={<AdminUsersDHome/>}/>
+            <Route path='/home/admin/users/:id' element={<AdminSingleUserView />} />
+            <Route path='/home/admin/users/view-todos/:id' element={<AdminViewUsersTodos/>}/>
+            </Route>
             </Route>           
           </Routes>       
     );

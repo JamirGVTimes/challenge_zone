@@ -5,8 +5,7 @@ import {Divider, Input, Row, Col, Form} from 'antd'
 import { useDispatch, useSelector } from 'react-redux';
 import { todoSet } from '../features/retrieveTodosSlice';
 
-
-const SingleTodoView = () => {
+function AdminViewUsersTodos() {
     const location = useLocation();
     const { id } = location.state;
     const retrievedTodos = useSelector((todox) => todox.retrieveTodos.value);
@@ -15,7 +14,7 @@ const SingleTodoView = () => {
         todoTi: '',
         todoDes: ''
     });
-    const user = useSelector((guy) => guy.user.value);  
+    
     const dispatch = useDispatch();
     const thisTodo = retrievedTodos.filter((doh) => doh._id === id);
 
@@ -30,7 +29,7 @@ const SingleTodoView = () => {
 
     const handleUpdate = (id) => {        
         const updateObj = {
-            userName: user.userName,
+            userName: thisTodo.userName,
             todoTitle: updateTodo.todoTi,
             todoDescription: updateTodo.todoDes
         };
@@ -42,7 +41,7 @@ const SingleTodoView = () => {
 
     return ( 
         <div>
-            <Link to='/home/view-todos'> Back to Todos </Link> | Single todo Preview
+            <Link to='/home/admin/users'> Back to Todos </Link> | Single todo Preview for <b> {thisTodo.userName} </b>
         <Divider dashed/>
             {thisTodo.map((fg) => {
                 return (
@@ -122,8 +121,9 @@ const SingleTodoView = () => {
                      
               
                             
+
         </div>
     );
 }
 
-export default SingleTodoView;
+export default AdminViewUsersTodos;

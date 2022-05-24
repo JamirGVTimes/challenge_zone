@@ -2,12 +2,10 @@ import { useState, useEffect } from 'react';
 import { Row, Col, Divider } from 'antd';
 import { Link } from 'react-router-dom';
 import { EyeFilled, DeleteTwoTone } from '@ant-design/icons';
-import { format, formatDistance, formatRelative, subDays} from 'date-fns';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 
-const sort = 'asc';
 function TodoDisplay() {
     const user = useSelector((ut) => ut.user.value);
     const [retrieveTodos, setRetrieveTodos] = useState([{
@@ -27,6 +25,7 @@ function TodoDisplay() {
              });
      });
     const mytodos = retrieveTodos.filter((doh) => doh.userName === user.userName);
+
     const deleteTodo = (_id) => {
         axios.delete(`/bgima/delete-todo/${_id}`)
             .then((respo) => {
@@ -40,10 +39,10 @@ function TodoDisplay() {
             <Divider dashed/>
                
                  <Row gutter={4} className='row-header user-row'>
-                    <Col span={3}>
+                    <Col span={1}>
                         S/N
                     </Col>
-                    <Col span={4}>
+                    <Col span={6}>
                         Todo Title
                     </Col>
                     <Col span={14}>
@@ -54,14 +53,15 @@ function TodoDisplay() {
                 </Col>
                
             </Row>
-            {mytodos ? 
+            {mytodos !=''
+                ? 
                 
-            mytodos.map((todo, i) => (
+            mytodos.map((todo, index) => (
                 <Row gutter={6} className='map' key={todo._id} >
-                    <Col span={3} style={{fontSize:'1em',textAlign:'left',padding:'0.5em'}}>
-                    {todo.userName}
+                    <Col span={1} style={{fontSize:'1em',textAlign:'left',padding:'0.5em'}}>
+                    {index+1}
                     </Col>
-                    <Col span={4} style={{fontSize:'1em',textAlign:'left',padding:'0.5em'}}>
+                    <Col span={6} style={{fontSize:'1em',textAlign:'left',padding:'0.5em'}}>
                          { todo.todoTitle}
                     </Col>
                     <Col span={14} style={{fontSize:'1em',textAlign:'left',padding:'0.5em'}}>
@@ -83,7 +83,10 @@ function TodoDisplay() {
             ))
                 
                 :
-                "Oops No todos retreived yet!"
+                <div style={{ fontSize: '1.3em', color: 'red'}}>
+                    Oops No todos retrieved yet!
+                </div>
+                
         }
             
             

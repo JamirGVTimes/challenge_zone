@@ -4,13 +4,20 @@ import { Row, Col, Divider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { EyeFilled, DeleteTwoTone } from '@ant-design/icons';
+import { todoSet } from '../features/retrieveTodosSlice';
 
 function UserHome() {
     const [search, setSearch] = useState('');
     const todoList = useSelector((ub) => ub.retrieveTodos.value);
     const logedInUser = useSelector((ub) => ub.user.value);
+    const dispatch = useDispatch();
     const myOwnTodos = todoList.filter((got) => got.userName === logedInUser.userName);
-
+     useEffect(() => {
+        axios.get('/bgima/user-created-todos')
+            .then((res) => {
+                dispatch(todoSet(res.data));
+            });         
+    },[]);
     const deleteTodo = (_id) => {
         axios.delete(`/bgima/delete-todo/${_id}`)
             .then((respo) => {
@@ -62,9 +69,9 @@ function UserHome() {
                         } else if (val.todoTitle.toLowerCase().includes(search.toLowerCase())) {
                             return val
                         }
-                    }).map((val) => {
+                    }).map((val,index) => {
                         return (                                            
-                                <Row className="map" key={Math.random()} >
+                                <Row className="map" key={index} >
                                     <Col span={4}>
                                         {val.todoTitle}
                                     </Col>
